@@ -51,6 +51,6 @@ export default {
 
 .main-router-view {
   position: relative;
-  width: 100%;
+  width: 100vw;
 }
 </style>

@@ -26,19 +26,14 @@ export default {
         show: false,
         menus:[
           {
-            pagename: 'HomePageSlide',
-            icon: 'el-icon-s-custom',
-            color: 'rgb(17, 135, 238)',
-          },
-          {
-            pagename: 'VentWall',
-            icon: 'el-icon-s-comment',
-            color: 'rgb(238, 135, 17)',
-          },
-          {
             pagename: 'HomePage',
             icon: 'el-icon-s-home',
             color: 'rgb(38, 201, 106)',
+          },
+          {
+            pagename: 'HomePageSlide',
+            icon: 'el-icon-s-custom',
+            color: 'rgb(17, 135, 238)',
           },
           {
             pagename: 'RightPage',
@@ -53,7 +48,7 @@ export default {
       this.$router.push({ name: pathname})
     },
     showChange(){
-      this.show = !this.show
+      this.show = !this.show;
     }
   }
 }
