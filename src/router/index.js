@@ -44,212 +44,200 @@ import MyAppointment from '@/components/components/BookManager/Router/MyAppointm
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/DepartmentPage',
-      name: 'DepartmentPage',
-      component: DepartmentPage
-    },
-    {
-      path: '/MaterialPage',
-      name: 'MaterialPage',
-      component: MaterialPage,
-      children:[
-        {
-          path: '/MaterialPage',
-          name: 'MaterialForm',
-          component: MaterialForm,
+    routes: [{
+            path: '/DepartmentPage',
+            name: 'DepartmentPage',
+            component: DepartmentPage
         },
         {
-          path: '/MaterialPage/SoftWareForm',
-          name: 'SoftWareForm',
-          component: SoftWareForm,
-        },
-      ]
-    },
-    {
-      path: '/',
-      name: 'HomePage',
-      component: HomePage
-    },
-    {
-      path: '/BookManager',
-      name: 'BookManager',
-      component: BookManager,
-      children:[
-        {
-          path: '/BookManager',
-          name: 'BookList',
-          component: BookList,
+            path: '/MaterialPage',
+            name: 'MaterialPage',
+            component: MaterialPage,
+            children: [{
+                    path: '/MaterialPage',
+                    name: 'MaterialForm',
+                    component: MaterialForm,
+                },
+                {
+                    path: '/MaterialPage/SoftWareForm',
+                    name: 'SoftWareForm',
+                    component: SoftWareForm,
+                },
+            ]
         },
         {
-          path: '/BookManager/BookDetail',
-          name: 'BookDetail',
-          component: BookDetail,
+            path: '/',
+            name: 'HomePage',
+            component: HomePage
         },
         {
-          path: '/BookManager/MyAppointment',
-          name: 'MyAppointment',
-          component: MyAppointment,
+            path: '/BookManager',
+            name: 'BookManager',
+            component: BookManager,
+            children: [{
+                    path: '/BookManager',
+                    name: 'BookList',
+                    component: BookList,
+                },
+                {
+                    path: '/BookManager/BookDetail',
+                    name: 'BookDetail',
+                    component: BookDetail,
+                },
+                {
+                    path: '/BookManager/MyAppointment',
+                    name: 'MyAppointment',
+                    component: MyAppointment,
+                },
+            ]
         },
-      ]
-    },
-    {
-      path: '/RegisterPage',
-      name: 'RegisterPage',
-      component: RegisterPage
-    },
-    {
-      path: '/Advertise',
-      name: 'Advertise',
-      component: Advertise
-    },
-    {
-      path: '/Maintain',
-      name: 'Maintain',
-      component: Maintain
-    },
-    {
-      path: '/RightPage',
-      name: 'RightPage',
-      component: RightPage,
-      children:[{
-        path: '/Process',
-        name: 'Process',
-        component: Process,
-      },
-      {
-        path: '/MyRights',
-        name: 'MyRights',
-        component: MyRights,
-      },
-      {
-        path: '/RightFeedback',
-        name: 'RightFeedback',
-        component: RightFeedback,
-      },
-      {
-        path: '/ProcessShow',
-        name: 'ProcessShow',
-        component: ProcessShow,
-      },
-      {
-        path: '/RightPage',
-        name: 'RightPage',
-        component: AllProblem,
-      }
+        {
+            path: '/RegisterPage',
+            name: 'RegisterPage',
+            component: RegisterPage
+        },
+        {
+            path: '/Advertise',
+            name: 'Advertise',
+            component: Advertise
+        },
+        {
+            path: '/Maintain',
+            name: 'Maintain',
+            component: Maintain
+        },
+        {
+            path: '/RightPage',
+            name: 'RightPage',
+            component: RightPage,
+            children: [{
+                    path: '/Process',
+                    name: 'Process',
+                    component: Process,
+                },
+                {
+                    path: '/MyRights',
+                    name: 'MyRights',
+                    component: MyRights,
+                },
+                {
+                    path: '/RightFeedback',
+                    name: 'RightFeedback',
+                    component: RightFeedback,
+                },
+                {
+                    path: '/ProcessShow',
+                    name: 'ProcessShow',
+                    component: ProcessShow,
+                },
+                {
+                    path: '/RightPage',
+                    name: 'RightPage',
+                    component: AllProblem,
+                }
+            ]
+        },
+        {
+            path: '/VentPanel',
+            name: 'VentPanel',
+            component: VentPanel,
+            children: [{
+                    path: '/VentPanel',
+                    name: 'VentWall',
+                    component: VentWall,
+                },
+                {
+                    path: '/SubmitVent',
+                    name: 'SubmitVent',
+                    component: SubmitVent,
+                },
+            ]
+        },
+        {
+            path: '/LoginPage',
+            name: 'LoginPage',
+            component: LoginPage,
+        },
+        {
+            path: '/AdminPage',
+            name: 'AdminPage',
+            component: AdminPage,
+            children: [{
+                path: '/AdminPage/AdminForm',
+                name: 'AdminForm',
+                component: AdminForm,
+                children: [{
+                        path: '/AdminPage/RegisterForm',
+                        name: 'RegisterForm',
+                        component: RegisterForm,
+                    },
+                    {
+                        path: '/AdminPage/Statistics',
+                        name: 'Statistics',
+                        component: Statistics,
+                    },
+                    {
+                        path: '/AdminPage/AdminForm',
+                        name: 'DepartmentShow',
+                        component: DepartmentShow,
+                    },
+                    {
+                        path: '/AdminPage/HomePageAlert',
+                        name: 'HomePageAlert',
+                        component: HomePageAlert,
+                    },
+                    {
+                        path: '/AdminPage/HomePageSlide',
+                        name: 'HomePageSlide',
+                        component: HomePageSlide,
+                    },
+                    {
+                        path: '/AdminPage/ImageNews',
+                        name: 'ImageNews',
+                        component: ImageNews,
+                    },
+                    {
+                        path: '/AdminPage/ImportmentNews',
+                        name: 'ImportmentNews',
+                        component: ImportmentNews,
+                    },
+                    {
+                        path: '/AdminPage/NewestActivity',
+                        name: 'NewestActivity',
+                        component: NewestActivity,
+                    },
+                    {
+                        path: '/AdminPage/StarForm',
+                        name: 'StarForm',
+                        component: StarForm,
+                    },
+                    {
+                        path: '/AdminPage/MaterialShow',
+                        name: 'MaterialShow',
+                        component: MaterialShow,
+                    },
+                    {
+                        path: '/AdminPage/SoftWareShow',
+                        name: 'SoftWareShow',
+                        component: SoftWareShow,
+                    },
+                    {
+                        path: '/AdminPage/RightAdmin',
+                        name: 'RightAdmin',
+                        component: RightAdmin,
+                    },
+                    {
+                        path: '/AdminPage/RightAdminDealing',
+                        name: 'RightAdminDealing',
+                        component: RightAdminDealing,
+                    },
+                    {
+                        path: '/AdminPage/RightAdminDone',
+                        name: 'RightAdminDone',
+                        component: RightAdminDone,
+                    },
+                ]
+            }, ]
+        },
     ]
-    },
-    {
-      path: '/VentPanel',
-      name: 'VentPanel',
-      component: VentPanel,
-      children:[
-        {
-          path: '/VentPanel',
-          name: 'VentWall',
-          component: VentWall,
-        },
-        {
-          path: '/SubmitVent',
-          name: 'SubmitVent',
-          component: SubmitVent,
-        },
-      ]
-    },
-    {
-      path: '/LoginPage',
-      name: 'LoginPage',
-      component: LoginPage,
-    },
-    {
-      path: '/AdminPage',
-      name: 'AdminPage',
-      component: AdminPage,
-      children:[
-        // {
-        //   path: '/AdminPage',
-        //   name: 'LoginPage',
-        //   component: LoginPage,
-        // },
-        {
-          path: '/AdminPage/AdminForm',
-          name: 'AdminForm',
-          component: AdminForm,
-          children:[
-            {
-              path: '/AdminPage/RegisterForm',
-              name: 'RegisterForm',
-              component: RegisterForm,
-            },
-            {
-              path: '/AdminPage/Statistics',
-              name: 'Statistics',
-              component: Statistics,
-            },
-            {
-              path: '/AdminPage/AdminForm',
-              name: 'DepartmentShow',
-              component: DepartmentShow,
-            },
-            {
-              path: '/AdminPage/HomePageAlert',
-              name: 'HomePageAlert',
-              component: HomePageAlert,
-            },
-            {
-              path: '/AdminPage/HomePageSlide',
-              name: 'HomePageSlide',
-              component: HomePageSlide,
-            },
-            {
-              path: '/AdminPage/ImageNews',
-              name: 'ImageNews',
-              component: ImageNews,
-            },
-            {
-              path: '/AdminPage/ImportmentNews',
-              name: 'ImportmentNews',
-              component: ImportmentNews,
-            },
-            {
-              path: '/AdminPage/NewestActivity',
-              name: 'NewestActivity',
-              component: NewestActivity,
-            },
-            {
-              path: '/AdminPage/StarForm',
-              name: 'StarForm',
-              component: StarForm,
-            },
-            {
-              path: '/AdminPage/MaterialShow',
-              name: 'MaterialShow',
-              component: MaterialShow,
-            },
-            {
-              path: '/AdminPage/SoftWareShow',
-              name: 'SoftWareShow',
-              component: SoftWareShow,
-            },
-            {
-              path: '/AdminPage/RightAdmin',
-              name: 'RightAdmin',
-              component: RightAdmin,
-            },
-            {
-              path: '/AdminPage/RightAdminDealing',
-              name: 'RightAdminDealing',
-              component: RightAdminDealing,
-            },
-            {
-              path: '/AdminPage/RightAdminDone',
-              name: 'RightAdminDone',
-              component: RightAdminDone,
-            },
-          ]
-        },
-      ]
-    },
-  ]
 })
