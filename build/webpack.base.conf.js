@@ -11,7 +11,6 @@ function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
 
-
 module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
@@ -40,7 +39,6 @@ module.exports = {
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
-
         }
     },
     module: {

@@ -5,12 +5,9 @@ const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
-const env = require('../config/prod.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
     devtool: config.build.productionSourceMap ? config.build.devtool : false,
@@ -21,9 +18,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     },
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
-        new webpack.DefinePlugin({
-            'process.env': env
-        }),
+        new webpack.DefinePlugin({ 'process.env': require('../config/prod.env') }),
         new UglifyJsPlugin({
             uglifyOptions: {
                 compress: {
@@ -59,43 +54,18 @@ const webpackConfig = merge(baseWebpackConfig, {
         new webpack.HashedModuleIdsPlugin(),
         // enable scope hoisting
         new webpack.optimize.ModuleConcatenationPlugin(),
-        // split vendor js into its own file
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks(module) {
-                // any required modules inside node_modules are extracted to vendor
-                return (
-                    module.resource &&
-                    /\.js$/.test(module.resource) &&
-                    module.resource.indexOf(
-                        path.join(__dirname, '../node_modules')
-                    ) === 0
-                )
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: "commons",
+                    chunks: "initial",
+                    minChunks: 2
+                }
             }
-        }),
-        // extract webpack runtime and module manifest to its own file in order to
-        // prevent vendor hash from being updated whenever app bundle is updated
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest',
-            minChunks: Infinity
-        }),
-        // This instance extracts shared chunks from code splitted chunks and bundles them
-        // in a separate chunk, similar to the vendor chunk
-        // see: https://webpack.js.org/plugins/commons-chunk-plugin/#extra-async-commons-chunk
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'app',
-            async: 'vendor-async',
-            children: true,
-            minChunks: 3
-        }),
-
-        // copy custom static assets
-        new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, '../static'),
-            to: config.build.assetsSubDirectory,
-            ignore: ['.*']
-        }])
-    ]
+        }
+    }
 })
 
 if (config.build.productionGzip) {
@@ -117,8 +87,8 @@ if (config.build.productionGzip) {
 }
 
 if (config.build.bundleAnalyzerReport) {
-    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-    webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
 module.exports = webpackConfig

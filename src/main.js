@@ -6,13 +6,9 @@ import router from './router'
 import ElementUI from 'element-ui';
 import '../node_modules/element-ui/lib/theme-chalk/index.css';
 import Vueresource from 'vue-resource'
-import echarts from 'echarts'
-import axios from 'axios'
 var qiniu = require('qiniu-js')
 
 Vue.config.productionTip = false
-Vue.prototype.$ajax = axios
-Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);
 Vue.use(Vueresource);
 Vue.use(qiniu);
@@ -23,3 +19,11 @@ new Vue({
     components: { App },
     template: '<App/>'
 });
+
+
+import Router from 'vue-router'
+
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}
