@@ -11,6 +11,7 @@
 import BottomBar from "@/components/components/BottomBar";
 import TopBar from "@/components/components/TopBar";
 import FastMenu from "@/components/components/FastMenu";
+import Leftbar from "@/components/components/Leftbar";
 
 export default {
   name: "App",
